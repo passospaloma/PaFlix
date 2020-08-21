@@ -30,7 +30,7 @@ function Category() {
 
 useEffect(() => {
   const URL_DATA = window.location.hostname.includes('locahost')
-  ? 'http://localhost:8080'
+  ? 'http://localhost:8080/categories'
   : 'https://paflix.herokuapp.com/categories';
   fetch(URL_DATA)
   .then(async (serverAnswer) => {
