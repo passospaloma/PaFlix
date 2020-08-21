@@ -4,7 +4,7 @@ import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 
-function CadastroCategoria() {
+function Category() {
   const initialValues = {
     nome: '',
     description: '',
@@ -97,4 +97,4 @@ useEffect(() => {
   );
 }
 
-export default CadastroCategoria;
+export default Category;

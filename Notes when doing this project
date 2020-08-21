@@ -12,11 +12,20 @@ npx eslint --init
 -after installing eslint, change on package.json eslint version to 6.6.0
 
 npm install json-server to use Rest Api and put videos 
--create a file db.json
+-create a file db.json in src
+
 - add to package.json between "script" and "start" 
 "server": "json-server --watch db.json --port 8080",
 "dev": "concurrently \"react-scripts start\" \"npm run server\"",
 npm run server (to start db.json server)
+
+-create a file in src server.js
+- change in package.json after "script"  
+"server": "node ./server.js",
+"start": "npm run server",
+
+and after npm run dev (npm start + npm run server)
+
 
 -when there is an error with Npm... 
 -try to put this commmand line on vscode terminal
