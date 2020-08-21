@@ -29,7 +29,7 @@ function Category() {
 }
 
 useEffect(() => {
-  const URL_data = 'http://localhost:8080/categories';
+  const URL_data = 'https://paflix.herokuapp.com/categories';
   fetch('URL_data')
   .then(async (serverAnswer) => {
     const answer = await serverAnswer.json();
