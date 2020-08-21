@@ -1,0 +1,23 @@
+YOU NEED TO INSTALL
+
+npm install styled-components
+
+npm install react-router-dom
+
+npm install react-slick
+
+npm install prop-types
+
+npx eslint --init
+-after installing eslint, change on package.json eslint version to 6.6.0
+
+npm install json-server to use Rest Api and put videos 
+-create a file db.json
+- add to package.json between "script" and "start" 
+"server": "json-server --watch db.json --port 8080",
+"dev": "concurrently \"react-scripts start\" \"npm run server\"",
+npm run server (to start db.json server)
+
+-when there is an error with Npm... 
+-try to put this commmand line on vscode terminal
+echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
