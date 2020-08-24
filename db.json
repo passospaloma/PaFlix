@@ -1,16 +1,35 @@
 {
-    "categories": [
-        {
-        "id": 1,
-        "nome": "Front End",
-        "description": "uma categoria muito legal",
-        "color": "#cbd1ff"
+    "categories": [{
+            "id": 1,
+            "title": "Front End",
+            "color": "#cbd1ff",
+            "extra link": {
+                "text": "Formacao de Front End na Alura",
+                "url": "https://www.alura.com.br/cursos-online-front-end"
+            }
         },
         {
-            "id": 2,
-            "nome": "Back End",
-            "description": "uma categoria muito legal",
-            "color": "#cbd1ff"
+            "id": 1,
+            "title": "Front End",
+            "color": "#cbd1ff",
+            "extra link": {
+                "text": "Formacao de Front End na Alura",
+                "url": "https://www.alura.com.br/cursos-online-front-end"
+            }
+        }
+    ],
+
+    "videos": [{
+            "id": 1,
+            "categoryId": 1,
+            "title": "SEO com React",
+            "url": "https://www.youtube.com/watch?v=c8mVlakBESE"
+        },
+        {
+            "id": 1,
+            "categoryId": 1,
+            "title": "SEO com React",
+            "url": "https://www.youtube.com/watch?v=c8mVlakBESE"
         }
     ]
 }

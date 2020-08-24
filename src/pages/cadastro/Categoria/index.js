@@ -1,62 +1,42 @@
-import React, { useState , useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import PageDefault from '../../../components/PageDefault';
-import FormField from '../../../components/FormField';
-import Button from '../../../components/Button';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import PageDefault from "../../../components/PageDefault";
+import FormField from "../../../components/FormField";
+import Button from "../../../components/Button";
+import useForm from "../../../hooks/useForm";
 
-function Category() {
+function Categoria() {
   const initialValues = {
-    nome: '',
-    description: '',
-    color: '#000',
+    nome: "",
+    description: "",
+    color: "#000",
   };
 
+  const { handleChange, values, clearForm } = useForm(initialValues);
+
   const [categories, setCategories] = useState([]);
-  const [values, setValues] = useState(initialValues);
 
-  function setValue(key, value) {
-    setValues({
-      ...values,
-      [key]: value,
+  useEffect(() => {
+    const URL_DATA = window.location.hostname.includes("locahost")
+      ? "http://localhost:8080"
+      : "https://paflix.herokuapp.com";
+
+    fetch(URL_DATA).then(async (serverAnswer) => {
+      const answer = await serverAnswer.json();
+      setCategories([...answer]);
     });
-  }
-
-  function handleChange(eventInfo) {
-    setValue (
-      eventInfo.target.getAttribute('name'),
-    eventInfo.target.value,
-    );
-}
-
-useEffect(() => {
-  const URL_DATA = window.location.hostname.includes('locahost')
-  ? 'http://localhost:8080/categories'
-  : 'https://paflix.herokuapp.com/categories';
-  fetch(URL_DATA)
-  .then(async (serverAnswer) => {
-    const answer = await serverAnswer.json();
-    setCategories([
-     ...answer,
-    ]);
-  });
- 
-}, []);
-
-
+  }, []);
 
   return (
     <PageDefault>
-      <h1>Register Category: {values.name}
-      </h1>
+      <h1> Register Category: {values.name} </h1>
       <form
         onSubmit={function handleSubmit(eventInfo) {
           eventInfo.preventDefault();
-          setCategories([...categories, values
-          ]);
+          setCategories([...categories, values]);
 
-          setValues(initialValues);
+          clearForm();
         }}
-      
       >
         <FormField
           label="Category Name"
@@ -79,24 +59,21 @@ useEffect(() => {
           onChange={handleChange}
         />
 
-        <Button>Cadastrar</Button>
+        <Button> Cadastrar </Button>
       </form>
 
-        {categories.length === 0 && <div>
-          loading...
-          </div>}
+      {categories.length === 0 && <div>loading...</div>}
 
       <ul>
+        {" "}
         {categories.map((category) => (
-        <li key={`${category.name}`}>
-          {category.name}
-        </li>
-        ))}
+          <li key={`${category.title}`}> {category.title}</li>
+        ))}{" "}
       </ul>
 
-      <Link to="/">Go to HomePage</Link>
+      <Link to="/"> Go to HomePage </Link>
     </PageDefault>
   );
 }
 
-export default Category;
+export default Categoria;
